@@ -5,7 +5,7 @@ const schema=new mongoose.Schema({
         type:String,
         required:true
     },
-    emial:{
+    email:{
         type:String,
         unique:true,
         required:true
