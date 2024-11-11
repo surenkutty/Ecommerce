@@ -3,19 +3,21 @@ import { User } from "../models/User.js";
 
 export const isAuth = async (req, res, next) => {
     try {
-        // Retrieve token from the Authorization header
+        // Retrieve token from the custom 'token' header
         const token = req.headers.token;
-       
+
+        // Check if the token is provided
+        if (!token) {
+            return res.status(404).json({ message: "please login to access" });
+        }
 
        
-
-        // Verify the token
         const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Decoded User ID:", decodedData._id);
         req.user = await User.findById(decodedData._id);
 
-        if (!req.user) {
-            return res.status(404).json({ message: "User not found" });
-        }
+        // Check if the user exists in the database
+        
 
         next();
     } catch (error) {
