@@ -11,6 +11,7 @@ app.use(express.json());
 const port=process.env.PORT;
 
 app.use("/api",UserRoutes);
+app.use("/uploads",express.static("uploads"))
 
 app.use("/api",productRoutes);
 

@@ -2,7 +2,7 @@ import multer from "multer";
 import {v4 as uuid} from "uuid";
 const storage=multer.diskStorage({
     destination(req,file,cb){
-        cd(null,"./uploads")
+        cb(null,"./uploads")
     },
     filename(req,file,cb){
         const id=uuid();
