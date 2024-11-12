@@ -19,6 +19,10 @@ const productSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
+    mrp:{
+        type:Number,
+        required:true
+    },
     image:{
         type:String,
         required:true
@@ -33,7 +37,7 @@ const productSchema=new mongoose.Schema({
     },
     createdAt:{
         type:Date,
-        required:true
+        default:Date.now(),
     },
 })
 export const Product=mongoose.model("Product",productSchema)
